@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh" data-attr-t lang-t="lang">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{:config_get('title')}</title>
+  <link rel="stylesheet" href="{$template_path}assets/css/app.css">
+  <meta name="description" content="{:config_get('description')}"/>
+  <meta name="keywords" content="{:config_get('keywords')}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
+  <!-- ========== Topbar ========== -->
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar__inner">
+        <a class="brand" href="/">
+          <span class="brand__mark"></span>
+          <span class="brand__name">{:config_get('sitename')}</span>
+        </a>
+
+        <nav class="nav">
+          <a class="nav__link" href="/" data-t="top-nav.more">首页</a>
+          <a class="nav__link" href="#features" data-scroll>能力</a>
+          <a class="nav__link" href="#access" data-scroll>接入</a>
+          {if config_get('test_open')}
+          <a class="nav__link" href="/user/test">测试支付</a>
+          {/if}
+          <a class="nav__link" href="/doc">开发文档</a>
+        </nav>
+
+        <div class="nav__actions only-desktop">
+          {if $islogin}
+          <a class="btn btn--ghost" href="/user/">用户中心</a>
+          {else}
+          <a class="btn btn--ghost" href="/user/">登录</a>
+          <a class="btn btn--primary" href="/user/#/auth/register" data-t="top-nav.signup">注册</a>
+          {/if}
+        </div>
+
+        <a class="hamburger only-mobile" href="javascript:void(0);" aria-label="打开菜单">
+          <span></span><span></span><span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== Mobile Drawer ========== -->
+  <div class="mobile-drawer">
+    <div class="mobile-drawer__mask"></div>
+    <div class="mobile-drawer__panel">
+      <a class="brand" href="/">
+        <span class="brand__mark"></span>
+        <span class="brand__name">{:config_get('sitename')}</span>
+      </a>
+      <div class="mobile-nav">
+        <a href="/" data-t="top-nav.more">首页</a>
+        <a href="#features" data-scroll>能力</a>
+        <a href="#access" data-scroll>接入</a>
+        {if config_get('test_open')}
+        <a href="/user/test">测试支付</a>
+        {/if}
+        <a href="/doc">开发文档</a>
+        {if $islogin}
+        <a href="/user/">用户中心</a>
+        {else}
+        <a href="/user/">登录</a>
+        <a href="/user/#/auth/register">注册</a>
+        {/if}
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ========== Hero ========== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <div class="hero__eyebrow">
+              <span class="hero__eyebrow-dot"></span>
+              聚合支付平台
+            </div>
+            <h1 class="hero__title">简洁强大的<br><span>支付接入</span>方案</h1>
+            <p class="hero__desc">{:config_get('sitename')} 以统一接口串联下单、支付、回调、退款与对账，配合清晰文档与工具能力，让接入更省心。</p>
+            <div class="hero__cta">
+              {if $islogin}
+              <a class="btn btn--primary btn--lg" href="/user/">进入用户中心</a>
+              {else}
+              <a class="btn btn--primary btn--lg" href="/user/">立即开始</a>
+              <a class="btn btn--lg" href="/doc">查看文档</a>
+              {/if}
+            </div>
+            <div class="hero__badges">
+              <span class="badge"><i></i>极速接入</span>
+              <span class="badge"><i></i>安全稳定</span>
+              <span class="badge"><i></i>多渠道聚合</span>
+            </div>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__card">
+              <img src="{$template_path}assets/images/hero.svg" alt="产品能力概览">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Features ========== -->
+    <section class="section section--alt" id="features">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__label">核心能力</p>
+          <h2 class="section__title">一套接口，覆盖全流程</h2>
+          <p class="section__hint">订单、回调、退款、对账，统一抽象，减少重复开发，更快上线。</p>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="card__icon">
+              <img src="{$template_path}assets/images/icon-simple.svg" alt="">
+            </div>
+            <p class="card__title">统一接口</p>
+            <p class="card__desc">订单、回调、查询、退款等流程统一抽象，减少业务重复开发，降低维护成本。</p>
+          </div>
+          <div class="card">
+            <div class="card__icon">
+              <img src="{$template_path}assets/images/icon-fast.svg" alt="">
+            </div>
+            <p class="card__title">快速接入</p>
+            <p class="card__desc">结合测试支付与开发文档，让你更快完成从验证到上线的全流程。</p>
+          </div>
+          <div class="card">
+            <div class="card__icon">
+              <img src="{$template_path}assets/images/icon-safe.svg" alt="">
+            </div>
+            <p class="card__title">安全合规</p>
+            <p class="card__desc">分账、风控与账户体系能力，覆盖更多平台型业务场景，保障资金安全。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Access Steps ========== -->
+    <section class="section" id="access">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__label">快速接入</p>
+          <h2 class="section__title">三步完成接入</h2>
+          <p class="section__hint">路径更短，反馈更快，让开发体验更顺畅。</p>
+        </div>
+        <div class="split">
+          <div class="panel">
+            <div class="steps">
+              <div class="step">
+                <div class="step__n">1</div>
+                <div class="step__body">
+                  <p class="step__t">配置参数</p>
+                  <p class="step__d">在用户中心配置商户与密钥信息，准备接入所需参数。</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step__n">2</div>
+                <div class="step__body">
+                  <p class="step__t">发起支付</p>
+                  <p class="step__d">按文档创建订单并选择支付方式，获取跳转 / 拉起参数。</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step__n">3</div>
+                <div class="step__body">
+                  <p class="step__t">处理回调</p>
+                  <p class="step__d">验签更新业务状态，必要时使用查询接口对账确认。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <pre class="code"><b>POST</b> /pay/submit
+
+pid=你的商户ID
+type=alipay|wxpay
+out_trade_no=商户订单号
+notify_url=异步回调地址
+return_url=同步跳转地址
+name=商品名称
+money=金额</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Stats ========== -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <p class="section__label">服务指标</p>
+          <h2 class="section__title">体验与稳定性并重</h2>
+          <p class="section__hint">从设计到性能，每一个细节都为更好的用户体验而生。</p>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat__v">更清晰</div>
+            <div class="stat__k">浅色信息层级，突出核心卖点，降低认知负担</div>
+          </div>
+          <div class="stat">
+            <div class="stat__v">更顺滑</div>
+            <div class="stat__k">移动端抽屉菜单与锚点滚动，操作流畅自然</div>
+          </div>
+          <div class="stat">
+            <div class="stat__v">更易用</div>
+            <div class="stat__k">联系信息带二维码快速触达，沟通无障碍</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta__box">
+          <div>
+            <h3 class="cta__title">需要定制接入方案？</h3>
+            <p class="cta__desc">联系团队获取专属指导与测试支持，让你的业务更快上线。</p>
+          </div>
+          <div class="hero__cta">
+            {if $islogin}
+            <a class="btn btn--primary btn--lg" href="/user/">用户中心</a>
+            {else}
+            <a class="btn btn--primary btn--lg" href="/user/">立即开始</a>
+            <a class="btn btn--ghost btn--lg" href="/doc">开发文档</a>
+            {/if}
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer__grid">
+        <div>
+          <p class="footer__title">关于</p>
+          <div class="footer__list">
+            <a href="/">首页</a>
+            <a href="/doc">开发文档</a>
+            <a href="/agreement.html" target="_blank">服务条款</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__title">产品</p>
+          <div class="footer__list">
+            <a href="#">聚合支付</a>
+            <a href="#">合规分账</a>
+            <a href="#">风控管理</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__title">解决方案</p>
+          <div class="footer__list">
+            <a href="#">电商行业</a>
+            <a href="#">零售行业</a>
+            <a href="#">服务行业</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__title">联系我们</p>
+          <div class="footer__list">
+            {if config_get('kfqq')}
+            <div class="contact-row">
+              <span>QQ:</span>
+              <a href="{:config_get('kfqq_url')}" target="_blank">{:config_get('kfqq')}</a>
+              {if config_get('kfqq_url')}
+              <span class="contact-qr-wrap" data-qr-link="{:config_get('kfqq_url')}">
+                <span class="contact-qr-icon" title="查看二维码"></span>
+                <span class="contact-qr-pop"><span class="contact-qr-canvas" aria-label="QQ二维码"></span></span>
+              </span>
+              {/if}
+            </div>
+            {/if}
+            {if config_get('wework_url')}
+            <div class="contact-row">
+              <span>微信:</span>
+              <a href="{:config_get('wework_url')}" target="_blank">企业微信</a>
+              <span class="contact-qr-wrap" data-qr-link="{:config_get('wework_url')}">
+                <span class="contact-qr-icon" title="查看二维码"></span>
+                <span class="contact-qr-pop"><span class="contact-qr-canvas" aria-label="微信二维码"></span></span>
+              </span>
+            </div>
+            {/if}
+            {if config_get('email')}
+            <div class="contact-row">
+              <span>邮箱:</span>
+              <a href="mailto:{:config_get('email')}" target="_blank">{:config_get('email')}</a>
+            </div>
+            {/if}
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile footer -->
+      <div class="footer-mobile">
+        <div class="accordion">
+          <div class="accordion__item">
+            <div class="accordion__title"><span>产品</span><span>+</span></div>
+            <div class="accordion__content">
+              <div class="footer__list">
+                <a href="#">聚合支付</a>
+                <a href="#">合规分账</a>
+                <a href="#">风控管理</a>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__title"><span>解决方案</span><span>+</span></div>
+            <div class="accordion__content">
+              <div class="footer__list">
+                <a href="#">电商行业</a>
+                <a href="#">零售行业</a>
+                <a href="#">服务行业</a>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__title"><span>协议政策</span><span>+</span></div>
+            <div class="accordion__content">
+              <div class="footer__list">
+                <a href="/agreement.html" target="_blank">服务条款</a>
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__title"><span>联系我们</span><span>+</span></div>
+            <div class="accordion__content">
+              <div class="footer__list">
+                {if config_get('kfqq')}
+                <div class="contact-row">
+                  <span>QQ:</span>
+                  <a href="{:config_get('kfqq_url')}" target="_blank">{:config_get('kfqq')}</a>
+                </div>
+                {/if}
+                {if config_get('wework_url')}
+                <div class="contact-row">
+                  <span>微信:</span>
+                  <a href="{:config_get('wework_url')}" target="_blank">企业微信</a>
+                </div>
+                {/if}
+                {if config_get('email')}
+                <div class="contact-row">
+                  <span>邮箱:</span>
+                  <a href="mailto:{:config_get('email')}" target="_blank">{:config_get('email')}</a>
+                </div>
+                {/if}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="beian">
+        <span>&copy; {:config_get('sitename')}</span>
+        <span>{:config_get('footer')}</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{$cdnpublic}jquery/3.7.1/jquery.min.js"></script>
+  <script src="{$cdnpublic}qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="{$template_path}assets/js/app.js"></script>
+</body>
+</html>
